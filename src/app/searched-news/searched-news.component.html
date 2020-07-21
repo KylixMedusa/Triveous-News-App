@@ -5,7 +5,7 @@
     <div class="content" (scroll)="handlescroll($event)">
 
         <div *ngFor="let article of news" class="card">
-            <img src="{{article.urlToImage}}" alt="">
+            <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>
                 <p>{{article.description}}</p>
