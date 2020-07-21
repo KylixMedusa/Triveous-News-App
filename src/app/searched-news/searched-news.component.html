@@ -1,9 +1,9 @@
 
-<div class="wrapper">
+<div class="wrapper" id="searched">
     <div class="heading">
         <h1>{{title}}</h1>
     </div>
-    <div class="content" (scroll)="handlescroll($event)">
+    <div class="content">
         <div *ngIf="apicall" class="loader"></div>
         <div *ngFor="let article of news" class="card">
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
@@ -15,10 +15,16 @@
         </div>
         <div class="noresult" *ngIf="news.length == 0 && apicall==false">No match Found</div>
     </div>
+    <div *ngIf="news.length != 0" class="pagination--container">
+        <span>Showing page {{pagecount}} out of {{pagelength}}</span>
+        <div>
+            <button (click)="firstPage()" *ngIf="(pagecount-1) > 1"><i class="fa fa-angle-double-left"></i></button>
+            <button (click)="previousPage()" *ngIf="pagecount>1"><i class="fa fa-angle-left"></i></button>
+            <button (click)="nextPage()" *ngIf="pagelength > pagecount"><i class="fa fa-angle-right"></i></button>
+            <button (click)="lastPage()" *ngIf="pagelength>(pagecount+1)"><i class="fa fa-angle-double-right"></i></button>
+        </div>
+     </div>
 </div>
-
-
-
 
 
 

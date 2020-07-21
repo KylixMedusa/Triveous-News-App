@@ -1,11 +1,16 @@
+
+
 body {
     color: #5a5a5a;
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 15px;
     height:100%;
     overflow: visible;
+    scroll-behavior: smooth;
 }
 app-root{
     height:100%;
     overflow: visible;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

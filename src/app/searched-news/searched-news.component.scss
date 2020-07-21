@@ -1,6 +1,5 @@
 .wrapper{
-    
-    padding-top: 2vw;
+     padding-top: 2vw;
 }
 
 .loader {
@@ -27,8 +26,6 @@
   }
 
 .content{
-    // height:500px;
-    // overflow: auto;
     margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -74,6 +71,21 @@
     grid-column: span 2;
     place-self: center;
     font-size: 1rem;
+}
+
+.viewport {
+    height: 2000px;
+    width: 100%;
+    background: #C4BBB8;
+    box-shadow: 1px 1px 1px grey;
+  }
+
+.pagination--container{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+    background-color: #eee;
 }
 
 @media screen and (max-width:990px){
