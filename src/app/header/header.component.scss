@@ -1,0 +1,33 @@
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header{
+    background-color: black;
+    padding:5px 0;
+}
+header h1{
+    color:gainsboro;
+}
+header h1 small{
+    color:gray;
+    font-size: medium;
+    margin-left: 10px;
+}
+.container{
+    padding-top:5px;
+}
+
+@media screen and (max-width:600px){
+    header{
+        text-align:center;
+    }
+    header h1{
+        font-size:xx-large ;
+    }
+    header h1 small {
+        display: block;
+        margin-left: 0;
+    }   
+}

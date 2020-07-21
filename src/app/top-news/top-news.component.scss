@@ -1,0 +1,64 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper{
+    background-color: rgb(196, 196, 196);
+}
+.container{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 2rem;
+    padding: 2rem 0;
+}
+.card{
+    position: relative;
+}
+.card img{
+    width:100%;
+    max-height: 60%;
+}
+.card--contents{
+    padding:5%;
+}
+.card h3, .card h3 a{
+    font-size: 1rem;
+    color:rgb(29, 29, 29);
+    text-decoration: none;
+}
+.card h3 a:hover{
+    text-decoration: underline;
+}
+.card--contents p{
+    color:red;
+    font-weight: bold;
+}
+.card .pill{
+    background-color: red;
+    padding:0px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    color:white;
+    font-weight: bold;
+    width:max-content;
+    height:max-content;
+    position: absolute;
+    top:10px;
+    left:10px;
+}
+
+@media screen and (max-width:1000px){
+    .container{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media screen and (max-width:760px){
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .card h3, .card h3 a{
+        font-size: 1.2rem;
+    }
+}
