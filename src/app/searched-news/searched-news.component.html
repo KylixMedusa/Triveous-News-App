@@ -3,36 +3,13 @@
         <h1>Politics</h1>
     </div>
     <div class="content" (scroll)="handlescroll($event)">
-        <div class="card">
-            <img src="https://static01.nyt.com/images/2016/08/06/us/00pain-web1/00pain-web1-superJumbo.jpg?quality=90&auto=webp" alt="">
+
+        <div *ngFor="let article of news" class="card">
+            <img src="{{article.urlToImage}}" alt="">
             <div class="card--contents">
-                <h3><a href="#">Minorities Suffer From Unequal Pain Treatment</a></h3>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <p><em>3 mins ago</em></p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://static01.nyt.com/images/2016/08/06/us/00pain-web1/00pain-web1-superJumbo.jpg?quality=90&auto=webp" alt="">
-            <div class="card--contents">
-                <h3><a href="#">Minorities Suffer From Unequal Pain Treatment</a></h3>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <p><em>3 mins ago</em></p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://static01.nyt.com/images/2016/08/06/us/00pain-web1/00pain-web1-superJumbo.jpg?quality=90&auto=webp" alt="">
-            <div class="card--contents">
-                <h3><a href="#">Minorities Suffer From Unequal Pain Treatment</a></h3>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <p><em>3 mins ago</em></p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://static01.nyt.com/images/2016/08/06/us/00pain-web1/00pain-web1-superJumbo.jpg?quality=90&auto=webp" alt="">
-            <div class="card--contents">
-                <h3><a href="#">Minorities Suffer From Unequal Pain Treatment</a></h3>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <p><em>3 mins ago</em></p>
+                <h3><a href="{{article.url}}">{{article.title}}</a></h3>
+                <p>{{article.description}}</p>
+                <p><em>{{article.publishedAt}}</em></p>
             </div>
         </div>
     </div>

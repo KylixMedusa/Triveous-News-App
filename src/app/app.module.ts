@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TopNewsComponent } from './top-news/top-news.component';
 import { SideNewsComponent } from './side-news/side-news.component';
 import { SearchedNewsComponent } from './searched-news/searched-news.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SearchedNewsComponent } from './searched-news/searched-news.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
