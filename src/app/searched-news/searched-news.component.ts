@@ -75,26 +75,8 @@ export class SearchedNewsComponent implements OnInit {
         console.log(e);
       });
   }
-  previousPage(){
-    --this.pagecount;
-    this.checkData(); 
-  }
-
-  //Takes user to next page
-  nextPage(){
-    ++this.pagecount;
-    this.checkData();
-  }
-
-  //Takes user to first page
-  firstPage(){
-    this.pagecount=1;
-    this.checkData();
-  }
-
-  //Takes user to last page 
-  lastPage(){
-    this.pagecount=this.pagelength;
+  movetopage(len){
+    this.pagecount=len;
     this.checkData();
   }
   checkData(){

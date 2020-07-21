@@ -18,10 +18,12 @@
     <div *ngIf="news.length != 0" class="pagination--container">
         <span>Showing page {{pagecount}} out of {{pagelength}}</span>
         <div>
-            <button (click)="firstPage()" *ngIf="(pagecount-1) > 1"><i class="fa fa-angle-double-left"></i></button>
-            <button (click)="previousPage()" *ngIf="pagecount>1"><i class="fa fa-angle-left"></i></button>
-            <button (click)="nextPage()" *ngIf="pagelength > pagecount"><i class="fa fa-angle-right"></i></button>
-            <button (click)="lastPage()" *ngIf="pagelength>(pagecount+1)"><i class="fa fa-angle-double-right"></i></button>
+            <button (click)="movetopage(1)" *ngIf="(pagecount-1) > 1"><i class="fa fa-angle-double-left"></i></button>
+            <button (click)="movetopage(pagecount-2)" *ngIf="pagecount-2>0">{{pagecount-2}}</button>
+            <button (click)="movetopage(pagecount-1)" *ngIf="pagecount-1>0">{{pagecount-1}}</button>
+            <button *ngIf="pagecount">{{pagecount}}</button>
+            <button (click)="movetopage(pagecount+1)" *ngIf="pagelength>=(pagecount+1)">{{pagecount+1}}</button>
+            <button (click)="movetopage(pagecount+2)" *ngIf="pagelength>=(pagecount+2)">{{pagecount+2}}</button>
         </div>
      </div>
 </div>

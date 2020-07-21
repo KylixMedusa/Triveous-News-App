@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit {
   searchnews(){
     if(this.searchvalue!="" && this.searchvalue){
       this.subscription.setQ(this.searchvalue);
+      this.listelement.classList.remove("active");
     }
 
   }
