@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../services/api-call.service';
 import { HttpResponse } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-top-news',
@@ -10,6 +11,7 @@ import { HttpResponse } from '@angular/common/http';
 export class TopNewsComponent implements OnInit {
 
   news: any = [];
+  defaultImage:any = "../../assets/defaultimage.png";
 
   constructor(private apiCalls : ApiCallService) { }
 
@@ -18,6 +20,7 @@ export class TopNewsComponent implements OnInit {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
+          article.publishedAt = moment(article.publishedAt).fromNow();
           this.news.push(article);
         });
         // console.log(this.news);
@@ -27,6 +30,9 @@ export class TopNewsComponent implements OnInit {
     }).catch ((e: any) => {
       console.log(e);
     });
+  }
+  loadimage(article,event){
+    event.srcElement.src = article.urlToImage;
   }
 
 }

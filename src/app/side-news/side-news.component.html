@@ -8,7 +8,7 @@
     </div>
     <div *ngIf="top_viewing" class="wrapper" style="padding-top: 0;">
         <div  *ngFor="let article of top_arr" class="card">
-            <img src="{{article.urlToImage}}" alt="">
+            <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>
                 <p><em>{{article.publishedAt}}</em></p>
@@ -16,20 +16,20 @@
         </div>
     </div>
     <div *ngIf="latest_viewing"  class="wrapper" style="padding-top: 0;">
-        <div *ngFor="let article2 of latest_arr" class="card" >
-            <img src="{{article2.urlToImage}}" alt="">
+        <div *ngFor="let article of latest_arr" class="card" >
+            <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
-                <h3><a href="{{article2.url}}">{{article2.title}}</a></h3>
-                <p><em>{{article2.publishedAt}}</em></p>
+                <h3><a href="{{article.url}}">{{article.title}}</a></h3>
+                <p><em>{{article.publishedAt}}</em></p>
             </div>
         </div>
     </div>
     <div  *ngIf="featured_viewing" class="wrapper" style="padding-top: 0;">
-        <div *ngFor="let article3 of featured_arr" class="card">
-            <img src="{{article3.urlToImage}}" alt="">
+        <div *ngFor="let article of featured_arr" class="card">
+            <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
-                <h3><a href="{{article3.url}}">{{article3.title}}</a></h3>
-                <p><em>{{article3.publishedAt}}</em></p>
+                <h3><a href="{{article.url}}">{{article.title}}</a></h3>
+                <p><em>{{article.publishedAt}}</em></p>
             </div>
         </div>
     </div>

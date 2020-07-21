@@ -1,8 +1,10 @@
+
 <div class="wrapper">
     <div class="heading">
         <h1>{{title}}</h1>
     </div>
     <div class="content" (scroll)="handlescroll($event)">
+        <div *ngIf="apicall" class="loader"></div>
         <div *ngFor="let article of news" class="card">
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
@@ -11,7 +13,7 @@
                 <p><em>{{article.publishedAt}}</em></p>
             </div>
         </div>
-        <div class="noresult" *ngIf="news.length == 0">No match Found</div>
+        <div class="noresult" *ngIf="news.length == 0 && apicall==false">No match Found</div>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../services/api-call.service';
 import { HttpResponse } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-side-news',
@@ -16,6 +17,7 @@ export class SideNewsComponent implements OnInit {
   top_viewing:boolean = false;
   latest_viewing:boolean = true;
   featured_viewing:boolean = false;
+  defaultImage:any = "../../assets/defaultimage.png";
 
   constructor(private apiCalls : ApiCallService) { }
 
@@ -24,6 +26,8 @@ export class SideNewsComponent implements OnInit {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
+          article.publishedAt = moment(article.publishedAt).fromNow();
+
           this.top_arr.push(article);
         });
         // console.log(this.top_arr);
@@ -37,6 +41,8 @@ export class SideNewsComponent implements OnInit {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
+          article.publishedAt = moment(article.publishedAt).fromNow();
+
           this.latest_arr.push(article);
         });
         // console.log(this.latest_arr);
@@ -50,6 +56,8 @@ export class SideNewsComponent implements OnInit {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
+          article.publishedAt = moment(article.publishedAt).fromNow();
+
           this.featured_arr.push(article);
         });
         // console.log(this.featured_arr);

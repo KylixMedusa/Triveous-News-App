@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../services/api-call.service';
 import { HttpResponse } from '@angular/common/http';
 import { SubscriptionService } from '../services/subscription.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-searched-news',
@@ -10,32 +11,34 @@ import { SubscriptionService } from '../services/subscription.service';
 })
 export class SearchedNewsComponent implements OnInit {
 
-  arr: any[] = [];
-  per: number;
-  page: number;
 
+  apicall:boolean = false;
   news: any = [];
-  defaultImage:any = "";
+  defaultImage:any = "../../assets/defaultimage.png";
   title:string;
 
 
   constructor(
     private apiCalls: ApiCallService,
-    private subscription: SubscriptionService
+    private subscription: SubscriptionService,
   ) { }
 
   ngOnInit(): void {
     // let keywords = null;
     this.subscription.searchQ.subscribe(search => {
+      this.apicall = true;
       // console.log(search);
       this.news = [];
       this.apiCalls.getNewsApiSearch(search, '2020-06-21').then((response: HttpResponse<any>) => {
         this.title = search == 'a'? "Home" : this.toTitleCase(search);
+        this.apicall = false;
         if (response.status == 200) {
           // console.log(response.body);
           response.body.articles.forEach(article => {
+            article.publishedAt = moment(article.publishedAt).fromNow();
             this.news.push(article);
           });
+          this.apicall = false;
           // console.log(this.news);
         } else {
           console.log(response);
@@ -50,10 +53,6 @@ export class SearchedNewsComponent implements OnInit {
     console.log(event.target.scrollTop, event.target.clientHeight);
   }
 
-  public getDate(dateTime: any) {
-    let today = new Date(Date.now());
-  }
-
   toTitleCase (str) {
     if ((str===null) || (str===''))
          return false;
@@ -62,6 +61,7 @@ export class SearchedNewsComponent implements OnInit {
   
    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
+  
   
 
 }
