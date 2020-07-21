@@ -15,7 +15,8 @@ export class SearchedNewsComponent implements OnInit {
   page: number;
 
   news: any = [];
-  defaultImage:any = "https://mwv.net.in/img/logo.png";
+  defaultImage:any = "";
+  title:string;
 
 
   constructor(
@@ -27,8 +28,9 @@ export class SearchedNewsComponent implements OnInit {
     // let keywords = null;
     this.subscription.searchQ.subscribe(search => {
       // console.log(search);
-      
+      this.news = [];
       this.apiCalls.getNewsApiSearch(search, '2020-06-21').then((response: HttpResponse<any>) => {
+        this.title = search == 'a'? "Home" : this.toTitleCase(search);
         if (response.status == 200) {
           // console.log(response.body);
           response.body.articles.forEach(article => {
@@ -51,5 +53,15 @@ export class SearchedNewsComponent implements OnInit {
   public getDate(dateTime: any) {
     let today = new Date(Date.now());
   }
+
+  toTitleCase (str) {
+    if ((str===null) || (str===''))
+         return false;
+    else
+     str = str.toString();
+  
+   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+  
 
 }

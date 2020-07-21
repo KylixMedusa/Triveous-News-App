@@ -138,4 +138,7 @@
     .sidebar--toggle{
         display: flex;
     }
+    .search input{
+        width:calc(100% - 34px);
+    }
 }

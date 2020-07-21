@@ -47,9 +47,17 @@
     color:red;
     font-weight: bold;
 }
+.content .noresult{
+    grid-column: span 2;
+    place-self: center;
+    font-size: 1rem;
+}
 
 @media screen and (max-width:990px){
     .content{
         grid-template-columns: 1fr;
+    }
+    .contents .noresult{
+        grid-column: span 1;
     }
 }

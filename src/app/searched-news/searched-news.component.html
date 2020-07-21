@@ -1,9 +1,8 @@
 <div class="wrapper">
     <div class="heading">
-        <h1>Politics</h1>
+        <h1>{{title}}</h1>
     </div>
     <div class="content" (scroll)="handlescroll($event)">
-
         <div *ngFor="let article of news" class="card">
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
@@ -12,6 +11,7 @@
                 <p><em>{{article.publishedAt}}</em></p>
             </div>
         </div>
+        <div class="noresult" *ngIf="news.length == 0">No match Found</div>
     </div>
 </div>
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../services/api-call.service';
 import { HttpResponse } from '@angular/common/http';
-import { SubscriptionService } from '../services/subscription.service';
 
 @Component({
   selector: 'app-top-news',
@@ -12,11 +11,10 @@ export class TopNewsComponent implements OnInit {
 
   news: any = [];
 
-  constructor(private apiCalls : ApiCallService, private subscription : SubscriptionService) { }
+  constructor(private apiCalls : ApiCallService) { }
 
   ngOnInit(): void {
-    this.subscription.setQ("politics");
-    this.apiCalls.getHeadlines('bitcoin', '2020-06-21').then((response: HttpResponse<any>) => {
+    this.apiCalls.getHeadlines('in','','',4).then((response: HttpResponse<any>) => {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
