@@ -17,7 +17,7 @@ export class ApiCallService {
   ) { }
 
   async getNewsApiSearch(keyword: string, from: any = null, to:any  = null, page: any = null): Promise<any>{
-    let url = this.base_url+'everything?q='+keyword;
+    let url = this.base_url+'everything?q='+keyword+'&language=en';
     if(from){
       url+='&form='+from;
     }
@@ -33,7 +33,7 @@ export class ApiCallService {
 
   async getHeadlines(country: any = 'in', category: string = null, sources: string = null, max: any = 6, page: any = null): Promise<any>{
     // https://newsapi.org/v2/top-headlines?country=us&apiKey=35412ec1c073432c8b21ef7b40eddcd5
-    let url = this.base_url + 'top-headlines?country=' + country + '&apiKey=' + this.api_key;
+    let url = this.base_url + 'top-headlines?country=' + country ;
     if(category){
       url += '&category=' + category;
     }
@@ -44,6 +44,16 @@ export class ApiCallService {
       url += '&page=' + page;
     }
     url += '&pageSize=' + max;
+    url+= '&apiKey=' + this.api_key;
+    return this.http.get(url, this.http_options).toPromise();
+  }
+  async getSideNews(keyword:any,country: any = 'in',sortBy:any): Promise<any>{
+    // https://newsapi.org/v2/top-headlines?country=us&apiKey=35412ec1c073432c8b21ef7b40eddcd5
+    let url = this.base_url +'everything?q='+keyword+'&language=en' ;
+    if(sortBy){
+      url += '&sortBy=' + sortBy;
+    }
+    url+= '&apiKey=' + this.api_key;
     return this.http.get(url, this.http_options).toPromise();
   }
 }

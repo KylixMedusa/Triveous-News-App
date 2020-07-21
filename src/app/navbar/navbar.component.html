@@ -2,19 +2,20 @@
     <div class="sidebar--toggle" (click)="opennavbar()"><div></div></div>
     <div class="wrapper" id="wrapper">
             <nav>
-                <li class="active">Home</li>
-                <li>World</li>
-                <li>Politics</li>
-                <li>Business</li>
-                <li>Science</li>
-                <li>Sports</li>
-                <li>Tech</li>
-                <li>Travel</li>
-                <li>Health</li>
+                <li class="active" (click)="addactive($event)" id="home">Home</li>
+                <li (click)="addactive($event)">General</li>
+                <li (click)="addactive($event)">World</li>
+                <li (click)="addactive($event)">Politics</li>
+                <li (click)="addactive($event)">Business</li>
+                <li (click)="addactive($event)">Science</li>
+                <li (click)="addactive($event)">Sports</li>
+                <li (click)="addactive($event)">Tech</li>
+                <li (click)="addactive($event)">Travel</li>
+                <li (click)="addactive($event)">Health</li>
             </nav>
     </div>
     <div class="search">
-        <input type="text" placeholder="Search for news">
-        <button><i class="fa fa-search"></i></button>
+        <input type="text" placeholder="Search for news" [(ngModel)]="searchvalue">
+        <button (click)="searchnews()"><i class="fa fa-search"></i></button>
     </div>
 </div>

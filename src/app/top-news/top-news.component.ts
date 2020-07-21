@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from '../services/api-call.service';
 import { HttpResponse } from '@angular/common/http';
-import { SubscriptionService } from '../services/subscription.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-top-news',
@@ -11,15 +11,16 @@ import { SubscriptionService } from '../services/subscription.service';
 export class TopNewsComponent implements OnInit {
 
   news: any = [];
+  defaultImage:any = "../../assets/defaultimage.png";
 
-  constructor(private apiCalls : ApiCallService, private subscription : SubscriptionService) { }
+  constructor(private apiCalls : ApiCallService) { }
 
   ngOnInit(): void {
-    this.subscription.setQ("politics");
-    this.apiCalls.getHeadlines('bitcoin', '2020-06-21').then((response: HttpResponse<any>) => {
+    this.apiCalls.getHeadlines('in','','',4).then((response: HttpResponse<any>) => {
       if(response.status == 200){
         // console.log(response.body);
         response.body.articles.forEach(article => {
+          article.publishedAt = moment(article.publishedAt).fromNow();
           this.news.push(article);
         });
         // console.log(this.news);
@@ -29,6 +30,9 @@ export class TopNewsComponent implements OnInit {
     }).catch ((e: any) => {
       console.log(e);
     });
+  }
+  loadimage(article,event){
+    event.srcElement.src = article.urlToImage;
   }
 
 }
