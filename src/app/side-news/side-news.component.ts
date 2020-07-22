@@ -17,11 +17,13 @@ export class SideNewsComponent implements OnInit {
   top_viewing:boolean = false;
   latest_viewing:boolean = true;
   featured_viewing:boolean = false;
-  defaultImage:any = "../../assets/defaultimage.png";
+  defaultImage:any = "../../assets/defaultimage.png";//Holds default image till the image loads
 
   constructor(private apiCalls : ApiCallService) { }
 
   ngOnInit(): void {
+
+    //Api calls to get data
     this.apiCalls.getSideNews('a','in','popularity').then((response: HttpResponse<any>) => {
       if(response.status == 200){
         // console.log(response.body);
@@ -69,6 +71,7 @@ export class SideNewsComponent implements OnInit {
     });
   }
 
+  //Handles the viewing of the top, latest and featured
   addactive(event){
     for(let item of event.target.parentElement.childNodes){
       item.classList.remove("active");
