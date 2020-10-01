@@ -56,3 +56,12 @@
 .card h3 a:hover{
     text-decoration: underline;
 }
+
+.effect {
+    transition: 0.3s;
+  }
+  
+  .effect:hover {
+    transform: scale(1.1);
+    z-index: 99;
+  }
