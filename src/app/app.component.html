@@ -1,7 +1,13 @@
+<!-- Header component with title and subtitle -->
 <app-header></app-header>
+<!-- Navvar component with categories and searchbar -->
 <app-navbar id="navbar" class="" (window:scroll)="navbarcheck()"></app-navbar>
+<!-- Top Headlines from various sources -->
 <app-top-news></app-top-news>
+<!-- Partitioned Container for categorized news and side news -->
 <div class="container">
+    <!-- component that holds searched news and categorized news -->
     <app-searched-news></app-searched-news>
+    <!-- component that holds latest, top and featured news -->
     <app-side-news></app-side-news>
 </div>

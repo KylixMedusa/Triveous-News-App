@@ -10,12 +10,14 @@ import * as moment from 'moment';
 })
 export class TopNewsComponent implements OnInit {
 
-  news: any = [];
-  defaultImage:any = "../../assets/defaultimage.png";
+  news: any = [];//Contains the top 4 headlines
+  defaultImage:any = "../../assets/defaultimage.png";//Holds the default image till the image is loaded
 
   constructor(private apiCalls : ApiCallService) { }
 
   ngOnInit(): void {
+
+    //Call to api to get top headlines
     this.apiCalls.getHeadlines('in','','',4).then((response: HttpResponse<any>) => {
       if(response.status == 200){
         // console.log(response.body);
@@ -30,7 +32,10 @@ export class TopNewsComponent implements OnInit {
     }).catch ((e: any) => {
       console.log(e);
     });
+
   }
+
+  //this function sets the image after load
   loadimage(article,event){
     event.srcElement.src = article.urlToImage;
   }

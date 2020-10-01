@@ -12,9 +12,9 @@ import * as moment from 'moment';
 export class SearchedNewsComponent implements OnInit {
 
 
-  apicall:boolean = false;
-  news: any = [];
-  defaultImage:any = "../../assets/defaultimage.png";
+  apicall:boolean = false;//To view loader during api call
+  news: any = [];//To hold all the 20 news per page
+  defaultImage:any = "../../assets/defaultimage.png"; //To hold default image before load
   title:string;
   pagecount: number = 1;
   rowcount: number = 20;
@@ -32,7 +32,7 @@ export class SearchedNewsComponent implements OnInit {
     this.loadData();
   }
 
-
+  //To convert searched to title case for showing as title in searcged news
   toTitleCase (str) {
     if ((str===null) || (str===''))
          return false;
@@ -41,6 +41,8 @@ export class SearchedNewsComponent implements OnInit {
   
    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
+  
+  //to call load news everytime a change is made to the keyword i.e. something is searched
   
   loadData(){
     this.subscription.searchQ.subscribe(search => {
@@ -52,6 +54,8 @@ export class SearchedNewsComponent implements OnInit {
       this.loadnews(search);
     });
   }
+
+  //To load the news using api call
   loadnews(search){
     this.apicall = true;
     this.news = [];
@@ -75,10 +79,14 @@ export class SearchedNewsComponent implements OnInit {
         console.log(e);
       });
   }
+
+  //To traverse amongst the pages using pagination
   movetopage(len){
     this.pagecount=len;
     this.checkData();
   }
+
+  //Check if the searched data exits or not
   checkData(){
     if(this.newsall.has(this.pagecount)){
       this.news = this.newsall.get(this.pagecount);
