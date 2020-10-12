@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="container">
-        <div class="card" *ngFor="let article of news">
+        <div class="card effect" *ngFor="let article of news">
             <img src="{{defaultImage}}" alt="" (load)="loadimage(article,$event)" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>

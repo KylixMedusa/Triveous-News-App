@@ -107,3 +107,26 @@
         grid-column: span 1;
     }
 }
+
+.img-wrapper {  
+//   width: 400px;
+//   height: 400px;
+  overflow: hidden; 
+}
+
+.inner-img {
+  transition: 0.3s;
+}
+
+.inner-img:hover {
+  transform: scale(1.2);
+}
+
+.effect {
+    transition: 0.3s;
+  }
+  
+  .effect:hover {
+    transform: scale(1.1);
+    z-index: 99;
+  }

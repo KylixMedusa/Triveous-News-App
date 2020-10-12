@@ -7,7 +7,7 @@
         </nav>
     </div>
     <div *ngIf="top_viewing" class="wrapper" style="padding-top: 0;">
-        <div  *ngFor="let article of top_arr" class="card">
+        <div  *ngFor="let article of top_arr" class="card effect">
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div *ngIf="latest_viewing"  class="wrapper" style="padding-top: 0;">
-        <div *ngFor="let article of latest_arr" class="card" >
+        <div *ngFor="let article of latest_arr" class="card effect" >
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div  *ngIf="featured_viewing" class="wrapper" style="padding-top: 0;">
-        <div *ngFor="let article of featured_arr" class="card">
+        <div *ngFor="let article of featured_arr" class="card effect">
             <img src="{{article.urlToImage? article.urlToImage:defaultImage}}" alt="">
             <div class="card--contents">
                 <h3><a href="{{article.url}}">{{article.title}}</a></h3>
